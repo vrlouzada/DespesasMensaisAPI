@@ -9,4 +9,8 @@
     <ProjectReference Include="..\DespesasMensais.Library\DespesasMensais.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Base\" />
+  </ItemGroup>
+
 </Project>

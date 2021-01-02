@@ -8,4 +8,15 @@
     <ProjectReference Include="..\DespesasMensais.Library\DespesasMensais.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Base\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
+    <PackageReference Include="Dapper.SimpleCRUD" Version="2.2.0.1" />
+  </ItemGroup>
+
 </Project>
