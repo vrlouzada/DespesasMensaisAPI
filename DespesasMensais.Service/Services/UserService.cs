@@ -25,15 +25,19 @@ namespace DespesasMensais.Service.Services
 
         private readonly AppSettings _appSettings;
 
+
+
         public UserService(IOptions<AppSettings> appSettings, IUserRepository userRepository)
         {
             _appSettings = appSettings.Value;
             _userRepository = userRepository;
         }
 
+
+
         public DTO.AuthenticateResponse Authenticate(DTO.AuthenticateRequest model)
         {
-            var user = _userRepository.CheckUser(model); //_users.SingleOrDefault(x => x.UserName == model.Username && x.Password == model.Password);
+            var user = _userRepository.CheckUser(model); 
 
             // return null if user not found
             if (user == null) return null;
@@ -44,15 +48,13 @@ namespace DespesasMensais.Service.Services
             return new DTO.AuthenticateResponse(user, token);
         }
 
-        public IEnumerable<DTO.UserAccount> GetAll()
-        {
-            return _users;
-        }
 
-        public DTO.UserAccount GetById(long id)
-        {
-            return _users.FirstOrDefault(x => x.Id == id);
-        }
+        public DTO.UserAccount Register(DTO.UserAccount newUser) => _userRepository.Insert(newUser);
+
+        public IEnumerable<DTO.UserAccount> GetAll() => _userRepository.GetAll();
+
+        public DTO.UserAccount GetById(long id) => _userRepository.GetById(id);
+
 
         private string GenerateJwtToken(DTO.UserAccount user)
         {
@@ -68,5 +70,6 @@ namespace DespesasMensais.Service.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
     }
 }

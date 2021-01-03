@@ -11,5 +11,6 @@ namespace DespesasMensais.Library.Contracts
         DTO.AuthenticateResponse Authenticate(DTO.AuthenticateRequest model);
         IEnumerable<DTO.UserAccount> GetAll();
         DTO.UserAccount GetById(long id);
+        DTO.UserAccount Register(DTO.UserAccount newUser);
     }
 }

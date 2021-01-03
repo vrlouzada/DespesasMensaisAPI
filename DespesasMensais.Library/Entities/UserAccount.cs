@@ -13,5 +13,6 @@ namespace DespesasMensais.Library.Entities
         public string UserName { get; set; }
         [JsonIgnore]
         public string Password { get; set; }
+        public bool IsActive { get; set; }
     }
 }

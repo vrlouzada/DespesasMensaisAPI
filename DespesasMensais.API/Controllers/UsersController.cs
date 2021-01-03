@@ -21,6 +21,8 @@ namespace DespesasMensais.API.Controllers
             _userService = userService;
         }
 
+
+
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
@@ -31,6 +33,26 @@ namespace DespesasMensais.API.Controllers
 
             return Ok(response);
         }
+
+
+
+        [HttpPost("register")]
+        public IActionResult Register(UserAccount newUser)
+        {
+            var responseRegister = _userService.Register(newUser);
+
+            if (responseRegister == null)
+                return BadRequest(new { message = "Register failed" });
+
+            var responseAuth = _userService.Authenticate(new AuthenticateRequest { Username = newUser.UserName, Password = newUser.Password });
+
+            if(responseAuth == null)
+                return BadRequest(new { message = "Register with success however an error occured while authentication." });
+
+            return Ok(responseAuth);
+        }
+
+
 
         [Authorize]
         [HttpGet]

@@ -49,5 +49,46 @@ namespace DespesasMensais.Testing.Repository
             Assert.True(response.LastName.Equals("Louzada"));
             Assert.True(response.Email.Equals("vrlouzada@hotmail.com"));
         }
+
+        [Fact]
+        public void GetAll()
+        {
+            var response = _userRepository.GetAll();
+
+            Assert.True(response != null);
+            Assert.True(response.Count > 0);
+        }
+
+        [Theory]
+        [InlineData(1L)]
+        public void BetById(long userId)
+        {
+            var response = _userRepository.GetById(userId);
+
+            Assert.True(response != null);
+            Assert.True(response.Name.Equals("Victor"));
+            Assert.True(response.LastName.Equals("Louzada"));
+            Assert.True(response.Email.Equals("vrlouzada@hotmail.com"));
+        }
+
+
+        [Theory]
+        [InlineData(1L)]
+        public void Update(long userId)
+        {
+            var response = _userRepository.GetById(userId);
+
+            Assert.True(response != null);
+            Assert.True(response.Name.Equals("Victor"));
+            Assert.True(response.LastName.Equals("Louzada"));
+            Assert.True(response.Email.Equals("vrlouzada@hotmail.com"));
+
+            response.IsActive = true;
+
+            var isUpdated = _userRepository.Update(response);
+
+            Assert.True(isUpdated);
+        }
+
     }
 }

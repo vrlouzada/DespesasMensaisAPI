@@ -37,7 +37,15 @@ namespace DespesasMensais.DataAccess.Repository
                     var users = db.GetList<UserAccount>().ToList();
 
                     if (users != null)
-                        return MapperUtil.MapIgnoreDependences<List<DTO.UserAccount>>(users);
+                    {
+                        var response = new List<DTO.UserAccount>();
+
+                        foreach (var user in users)
+                        {
+                            response.Add(MapperUtil.MapIgnoreDependences<DTO.UserAccount>(user));
+                        }
+                        return response;
+                    }
 
                     return null;
                 }
