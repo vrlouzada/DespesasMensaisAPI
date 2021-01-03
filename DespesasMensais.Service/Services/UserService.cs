@@ -1,7 +1,7 @@
 ﻿using DespesasMensais.Library.Contracts;
 using DespesasMensais.Library.Entities;
 using DespesasMensais.Library.Helpers;
-using DespesasMensais.Library.Models;
+using DTO = DespesasMensais.Library.DTO;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -10,27 +10,30 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using DespesasMensais.Library.Contracts.Repository;
 
 namespace DespesasMensais.Service.Services
 {
     public class UserService : IUserService
     {
+        private readonly IUserRepository _userRepository;
 
-        private List<UserAccount> _users = new List<UserAccount>
+        private List<DTO.UserAccount> _users = new List<DTO.UserAccount>
         {
-            new UserAccount { Id = 1, Name = "Test", LastName = "User", UserName = "test", Password = "test", Email = "teste@teste.com" }
+            new DTO.UserAccount { Id = 1, Name = "Test", LastName = "User", UserName = "test", Password = "test", Email = "teste@teste.com" }
         };
 
         private readonly AppSettings _appSettings;
 
-        public UserService(IOptions<AppSettings> appSettings)
+        public UserService(IOptions<AppSettings> appSettings, IUserRepository userRepository)
         {
             _appSettings = appSettings.Value;
+            _userRepository = userRepository;
         }
 
-        public AuthenticateResponse Authenticate(AuthenticateRequest model)
+        public DTO.AuthenticateResponse Authenticate(DTO.AuthenticateRequest model)
         {
-            var user = _users.SingleOrDefault(x => x.UserName == model.Username && x.Password == model.Password);
+            var user = _userRepository.CheckUser(model); //_users.SingleOrDefault(x => x.UserName == model.Username && x.Password == model.Password);
 
             // return null if user not found
             if (user == null) return null;
@@ -38,20 +41,20 @@ namespace DespesasMensais.Service.Services
             // authentication successful so generate jwt token
             var token = GenerateJwtToken(user);
 
-            return new AuthenticateResponse(user, token);
+            return new DTO.AuthenticateResponse(user, token);
         }
 
-        public IEnumerable<UserAccount> GetAll()
+        public IEnumerable<DTO.UserAccount> GetAll()
         {
             return _users;
         }
 
-        public UserAccount GetById(long id)
+        public DTO.UserAccount GetById(long id)
         {
             return _users.FirstOrDefault(x => x.Id == id);
         }
 
-        private string GenerateJwtToken(UserAccount user)
+        private string GenerateJwtToken(DTO.UserAccount user)
         {
             // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();

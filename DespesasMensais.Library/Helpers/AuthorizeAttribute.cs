@@ -11,7 +11,7 @@ namespace DespesasMensais.Library.Helpers
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var user = (UserAccount)context.HttpContext.Items["User"];
+            var user = (DTO.UserAccount)context.HttpContext.Items["User"];
             if (user == null)
             {
                 // not logged in

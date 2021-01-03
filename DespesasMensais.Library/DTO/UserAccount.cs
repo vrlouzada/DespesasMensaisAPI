@@ -1,17 +1,16 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace DespesasMensais.Library.Entities
+namespace DespesasMensais.Library.DTO
 {
     public class UserAccount
     {
-        [Key]
         public long Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
-        [JsonIgnore]
         public string Password { get; set; }
     }
 }

@@ -1,6 +1,9 @@
+using DespesasMensais.DataAccess.Repository;
 using DespesasMensais.Library.Contracts;
+using DespesasMensais.Library.Contracts.Repository;
 using DespesasMensais.Library.Helpers;
 using DespesasMensais.Service.Services;
+using HCI.Core.Helper.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,12 +33,14 @@ namespace DespesasMensais.API
         {
             services.AddCors();
             services.AddControllers();
+            IoC(ref services);
 
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +74,12 @@ namespace DespesasMensais.API
             app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(x => x.MapControllers());
+        }
+
+        public void IoC(ref IServiceCollection services)
+        {
+            ServicesRegister.AddServicesScope(services, typeof(IUserRepository).Assembly, "Repository");
+            ServicesRegister.AddServicesScope(services, typeof(IUserService).Assembly, "Service");
         }
     }
 }

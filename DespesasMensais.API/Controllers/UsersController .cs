@@ -1,6 +1,6 @@
 ﻿using DespesasMensais.Library.Contracts;
 using DespesasMensais.Library.Helpers;
-using DespesasMensais.Library.Models;
+using DespesasMensais.Library.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

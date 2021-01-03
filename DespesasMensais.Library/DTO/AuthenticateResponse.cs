@@ -1,6 +1,6 @@
-﻿using DespesasMensais.Library.Entities;
+﻿using DTO = DespesasMensais.Library.DTO;
 
-namespace DespesasMensais.Library.Models
+namespace DespesasMensais.Library.DTO
 {
     public class AuthenticateResponse
     {
@@ -12,7 +12,7 @@ namespace DespesasMensais.Library.Models
         public string Token { get; set; }
 
 
-        public AuthenticateResponse(UserAccount user, string token)
+        public AuthenticateResponse(DTO.UserAccount user, string token)
         {
             Id = user.Id;
             Name = user.Name;
