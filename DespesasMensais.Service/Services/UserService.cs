@@ -18,7 +18,7 @@ namespace DespesasMensais.Service.Services
 
         private List<UserAccount> _users = new List<UserAccount>
         {
-            new UserAccount { Id = 1, Name = "Test", LastName = "User", UserName = "test", Email = "teste@teste.com" }
+            new UserAccount { Id = 1, Name = "Test", LastName = "User", UserName = "test", Password = "test", Email = "teste@teste.com" }
         };
 
         private readonly AppSettings _appSettings;
