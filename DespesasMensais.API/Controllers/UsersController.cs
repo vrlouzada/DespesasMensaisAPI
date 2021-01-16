@@ -35,7 +35,6 @@ namespace DespesasMensais.API.Controllers
         }
 
 
-
         [HttpPost("register")]
         public IActionResult Register(UserAccount newUser)
         {
