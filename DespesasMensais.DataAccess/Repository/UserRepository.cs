@@ -94,26 +94,5 @@ namespace DespesasMensais.DataAccess.Repository
             }
         }
 
-        public DTO.UserAccount CheckUser(DTO.AuthenticateRequest model)
-        {
-            try
-            {
-                using (var db = GetConnection())
-                {
-                    var SQL = $"SELECT * FROM UserAccount WHERE UserName = '{model.Username}' and Password = '{model.Password}'";
-                    var user = db.QueryFirstOrDefault<DTO.UserAccount>(SQL);
-
-                    if (user != null)
-                        return MapperUtil.MapIgnoreDependences<DTO.UserAccount>(user);
-
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
     }
 }

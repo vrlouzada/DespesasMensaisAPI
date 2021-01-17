@@ -36,19 +36,7 @@ namespace DespesasMensais.Testing.Repository
             Assert.True(user.Id != 0);
         }
 
-        [Theory]
-        [InlineData("VRLouzada", "@Abc1234")]
-        public void CheckUser(string userName, string password)
-        {
-            var request = new DTO.AuthenticateRequest { Username = userName, Password = password };
-
-            var response = _userRepository.CheckUser(request);
-
-            Assert.True(response != null);
-            Assert.True(response.Name.Equals("Victor"));
-            Assert.True(response.LastName.Equals("Louzada"));
-            Assert.True(response.Email.Equals("vrlouzada@hotmail.com"));
-        }
+        
 
         [Fact]
         public void GetAll()

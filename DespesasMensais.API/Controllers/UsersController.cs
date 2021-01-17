@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DespesasMensais.API.Controllers
 {
@@ -23,18 +24,6 @@ namespace DespesasMensais.API.Controllers
 
 
 
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate(AuthenticateRequest model)
-        {
-            var response = _userService.Authenticate(model);
-
-            if (response == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
-
-            return Ok(response);
-        }
-
-
         [HttpPost("register")]
         public IActionResult Register(UserAccount newUser)
         {
@@ -42,22 +31,19 @@ namespace DespesasMensais.API.Controllers
 
             if (responseRegister == null)
                 return BadRequest(new { message = "Register failed" });
-
-            var responseAuth = _userService.Authenticate(new AuthenticateRequest { Username = newUser.UserName, Password = newUser.Password });
-
-            if(responseAuth == null)
-                return BadRequest(new { message = "Register with success however an error occured while authentication." });
-
-            return Ok(responseAuth);
+                       
+            return Ok(responseRegister);
         }
 
 
 
-        [Authorize]
+ 
         [HttpGet]
+        [Authorize]
         public IActionResult GetAll()
         {
             var users = _userService.GetAll();
+            var Id = User.Claims.First(claim => claim.Type == "Id").Value;
             return Ok(users);
         }
     }

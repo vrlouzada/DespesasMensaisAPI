@@ -18,34 +18,12 @@ namespace DespesasMensais.Service.Services
     {
         private readonly IUserRepository _userRepository;
 
-        private List<DTO.UserAccount> _users = new List<DTO.UserAccount>
-        {
-            new DTO.UserAccount { Id = 1, Name = "Test", LastName = "User", UserName = "test", Password = "test", Email = "teste@teste.com" }
-        };
-
         private readonly AppSettings _appSettings;
-
-
 
         public UserService(IOptions<AppSettings> appSettings, IUserRepository userRepository)
         {
             _appSettings = appSettings.Value;
             _userRepository = userRepository;
-        }
-
-
-
-        public DTO.AuthenticateResponse Authenticate(DTO.AuthenticateRequest model)
-        {
-            var user = _userRepository.CheckUser(model); 
-
-            // return null if user not found
-            if (user == null) return null;
-
-            // authentication successful so generate jwt token
-            var token = GenerateJwtToken(user);
-
-            return new DTO.AuthenticateResponse(user, token);
         }
 
 

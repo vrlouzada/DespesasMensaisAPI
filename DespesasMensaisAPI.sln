@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infraestructure", "3 - 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Test", "4 - Test", "{58DC2243-B671-44C8-9FF5-95350EF23097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DespesasMensais.Service", "DespesasMensais.Service\DespesasMensais.Service.csproj", "{CAA02EBE-D27D-48CD-8F8F-CCD85579FF49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DespesasMensais.Service", "DespesasMensais.Service\DespesasMensais.Service.csproj", "{CAA02EBE-D27D-48CD-8F8F-CCD85579FF49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DespesasMensais.Library", "DespesasMensais.Library\DespesasMensais.Library.csproj", "{4ED4D667-2E62-410C-AAD8-FD4901703F79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DespesasMensais.Library", "DespesasMensais.Library\DespesasMensais.Library.csproj", "{4ED4D667-2E62-410C-AAD8-FD4901703F79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DespesasMensais.DataAccess", "DespesasMensais.DataAccess\DespesasMensais.DataAccess.csproj", "{AB60F8D1-5F2D-4768-AB8D-0783B503A7A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DespesasMensais.DataAccess", "DespesasMensais.DataAccess\DespesasMensais.DataAccess.csproj", "{AB60F8D1-5F2D-4768-AB8D-0783B503A7A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DespesasMensais.Testing", "DespesasMensais.Testing\DespesasMensais.Testing.csproj", "{89BA6FF5-3097-4E56-8EA4-20928D7E616A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DespesasMensais.Testing", "DespesasMensais.Testing\DespesasMensais.Testing.csproj", "{89BA6FF5-3097-4E56-8EA4-20928D7E616A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DespesasMensais.API", "DespesasMensais.API\DespesasMensais.API.csproj", "{09186DA2-2103-4684-B32D-C390CA693828}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DespesasMensais.API", "DespesasMensais.API\DespesasMensais.API.csproj", "{09186DA2-2103-4684-B32D-C390CA693828}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DespesasMensais.Helper", "DespesasMensais.Helper\DespesasMensais.Helper.csproj", "{43142B6B-4455-46E5-8B96-0F60C0D22F5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DespesasMensais.Helper", "DespesasMensais.Helper\DespesasMensais.Helper.csproj", "{43142B6B-4455-46E5-8B96-0F60C0D22F5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
